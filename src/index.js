@@ -44,7 +44,8 @@ class TodoItem extends React.Component{
             <li onClick={
                 () => { this.props.clickHandler(this.props.index) }
             } className={this.props.details.completed ? 'completed' : ''}>
-                {this.props.details.name}
+                { this.props.details.name
+                }
             </li>
         )
     }
