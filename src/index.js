@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import TodoItem from './component/Todoitem'
 
 class TodoList extends React.Component{
     constructor(){
@@ -24,6 +25,14 @@ class TodoList extends React.Component{
     changeStatus(index)
     {
         console.log(this.state.tasks[index]);
+        var tasks = this.state.tasks;
+        var task = tasks[index];
+        task.completed = !task.completed;
+        this.setState(
+            {
+                tasks : tasks
+            }
+        )
     }
     render(){
         return(
@@ -38,17 +47,6 @@ class TodoList extends React.Component{
     }
 }
 
-class TodoItem extends React.Component{
-    render(){
-        return(
-            <li onClick={
-                () => { this.props.clickHandler(this.props.index) }
-            } className={this.props.details.completed ? 'completed' : ''}>
-                { this.props.details.name
-                }
-            </li>
-        )
-    }
-}
+
 
 ReactDOM.render(< TodoList />,document.getElementById('root'))
