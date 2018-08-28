@@ -44,7 +44,8 @@ class TodoList extends React.Component{
             }
         )
         this.setState({
-            tasks:tasks
+            tasks:tasks,
+            currentTask:''
         })
     }
     
