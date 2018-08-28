@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import TodoItem from './component/Todoitem'
+import TodoItem from './component/Todoitem';
+import TodoForm from './component/TodoForm';
 
 class TodoList extends React.Component{
     constructor(){
@@ -36,13 +37,16 @@ class TodoList extends React.Component{
     }
     render(){
         return(
-            <ul>
-               {
-                   this.state.tasks.map((task, index) => {
-                       return <TodoItem key={task.name} index={index} clickHandler={this.changeStatus} details={task} />
-                   })
-               }
-            </ul>
+            <section>
+                <TodoForm />
+                <ul>
+                {
+                    this.state.tasks.map((task, index) => {
+                        return <TodoItem key={task.name} index={index} clickHandler={this.changeStatus} details={task} />
+                    })
+                }
+                </ul>
+            </section>
         )
     }
 }
