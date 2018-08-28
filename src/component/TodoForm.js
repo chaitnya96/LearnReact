@@ -1,5 +1,12 @@
 import React from 'react'
- var TodoForm = () => {
-     return (<h1>TodoForm</h1>)
+ var TodoForm = (props) => {
+     return (
+         <form>
+            <input type="text" 
+            value={props.currentTask}
+            onChange={props.updateTask}
+            ></input>
+         </form>
+     )
  }
  export default TodoForm;

@@ -8,6 +8,7 @@ class TodoList extends React.Component{
     constructor(){
         super();
         this.changeStatus = this.changeStatus.bind(this);
+        this.updateTask = this.updateTask.bind(this);
         this.state={
             tasks:[{
                 name : "Buy Milk",
@@ -20,9 +21,17 @@ class TodoList extends React.Component{
             {
                 name : "Buy Bread",
                 completed : false
-            }]
+            }],
+            currentTask : ''
         }
     }
+
+    updateTask(newValue){
+        this.setState({
+            currentTask : newValue.target.value
+        }) 
+    }
+
     changeStatus(index)
     {
         console.log(this.state.tasks[index]);
@@ -38,7 +47,10 @@ class TodoList extends React.Component{
     render(){
         return(
             <section>
-                <TodoForm />
+                <TodoForm 
+                currentTask={ this.state.currentTask }
+                UpdateTask={this.updateTask}
+                />
                 <ul>
                 {
                     this.state.tasks.map((task, index) => {
