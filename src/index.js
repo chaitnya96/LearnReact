@@ -8,7 +8,8 @@ class TodoList extends React.Component{
     constructor(){
         super();
         this.changeStatus = this.changeStatus.bind(this);
-        this.updateTask = this.updateTask.bind(this);
+        this.ut= this.ut.bind(this);
+        this.at=this.at.bind(this);
         this.state={
             tasks:[{
                 name : "Buy Milk",
@@ -26,12 +27,27 @@ class TodoList extends React.Component{
         }
     }
 
-    updateTask(newValue){
+    ut(v){  //updateTask
         this.setState({
-            currentTask : newValue.target.value
-        }) 
+            currentTask : v.target.value,
+        })
     }
-
+    
+    at(evt){
+        evt.preventDefault();
+        let tasks = this.state.tasks;
+        let currentTask = this.state.currentTask;
+        tasks.push(
+            {
+                name : currentTask,
+                completed : false
+            }
+        )
+        this.setState({
+            tasks:tasks
+        })
+    }
+    
     changeStatus(index)
     {
         console.log(this.state.tasks[index]);
@@ -47,9 +63,9 @@ class TodoList extends React.Component{
     render(){
         return(
             <section>
-                <TodoForm 
-                currentTask={ this.state.currentTask }
-                UpdateTask={this.updateTask}
+                <TodoForm currentTask={this.state.currentTask}
+                        ut={this.ut}
+                        at={this.at}
                 />
                 <ul>
                 {
