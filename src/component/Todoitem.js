@@ -18,6 +18,12 @@ var TodoItem = (props) =>{
             () => { props.clickHandler(props.index) }
         } className={props.details.completed ? 'completed' : ''}>
             { props.details.name }
+            <button onClick={
+                (evt) => {
+                    evt.stopPropagation();
+                    return props.dt(props.index)
+                }
+            }>Delete</button>
         </li>
        ) 
 }
